@@ -2,10 +2,8 @@
 
 
 from win10toast import ToastNotifier
-from selenium import webdriver
 from time import sleep
-from datetime import datetime, time, date, timedelta
-from lxml import etree
+from datetime import datetime, time
 import requests
 from bs4 import BeautifulSoup
 from random import choice
@@ -24,7 +22,7 @@ def getIppool (daili_url, daili_page):
     IPpool = []
     header = {'User-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv,2.0.1) Gecko/20100101 Firefox/4.0.1'}
     for page in range(1,daili_page):
-        html = requests.get(daili_url + str(page) + '/', headers = header).text
+        html = requests.get(daili_url + str(page), headers = header).text
         soup = BeautifulSoup(html, 'lxml')
         table = soup.find_all('tr')
         for tr in table:
